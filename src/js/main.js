@@ -1,4 +1,4 @@
-import { tabHeaderHandler } from "./tabHeaderHandler"
+import { tabHeaderHandler } from "./tabHeaders/tabHeaderHandler"
 
 document.addEventListener('DOMContentLoaded', () => {    
 

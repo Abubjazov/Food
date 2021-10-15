@@ -1,4 +1,4 @@
-import { BALANCED, FITNESS, LENTEN, PREMIUM } from "./types"
+import { BALANCED, FITNESS, LENTEN, PREMIUM } from "./tabHeadersTypes"
 
 export const tabHeaderHandler = event => {
     event.preventDefault()
