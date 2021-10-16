@@ -18,12 +18,21 @@ export const actionTimer = (date) => {
 
             clearInterval(timer)
         } else {
-            timeNow = actionDate - timeNow
+            const time = remainingTimeParse(actionDate - timeNow)
 
-            days.textContent = ('0' + parseInt((timeNow / (1000 * 60 * 60 * 24)))).slice(-2)
-            hours.textContent = ('0' + parseInt((timeNow / (1000 * 60 * 60)) % 24)).slice(-2)
-            minutes.textContent = ('0' + parseInt((timeNow / (1000 * 60)) % 60)).slice(-2)
-            seconds.textContent = ('0' + parseInt((timeNow / 1000) % 60)).slice(-2)
+            days.textContent = time.days
+            hours.textContent = time.hours
+            minutes.textContent = time.minutes
+            seconds.textContent = time.seconds
         }        
+    }
+
+    function remainingTimeParse(time) {
+        return {
+            days: ('0' + parseInt((time / (1000 * 60 * 60 * 24)))).slice(-2),
+            hours: ('0' + parseInt((time / (1000 * 60 * 60)) % 24)).slice(-2),
+            minutes: ('0' + parseInt((time / (1000 * 60)) % 60)).slice(-2),
+            seconds: ('0' + parseInt((time / 1000) % 60)).slice(-2)
+        }
     }
 }
