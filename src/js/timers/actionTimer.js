@@ -5,9 +5,9 @@ export const actionTimer = () => {
           seconds = document.querySelector('#seconds'),
           actionTime = (new Date(2021, 9, 17)).getTime()
 
-    const actionTimer = setInterval(action, 1000)
+    const actionTimer = setInterval(updateTimer, 1000)
     
-    function action() {
+    function updateTimer() {
         let   timeNow = (new Date()).getTime()
 
         if (timeNow >= actionTime) {
