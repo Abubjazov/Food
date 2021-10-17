@@ -1,7 +1,7 @@
 import { BALANCED, FITNESS, LENTEN, PREMIUM } from "./tabHeadersTypes"
 
-export const tabHeaderHandler = event => {
-    event.preventDefault()
+export const tabHeaderHandler = e => {
+    e.preventDefault()
 
     const tabHeaders = document.querySelectorAll('.tabheader__item'),
           tabContent = document.querySelector('.tabcontent')
@@ -10,9 +10,9 @@ export const tabHeaderHandler = event => {
         tabheader.classList.remove('tabheader__item_active')
     })
 
-    event.target.classList.add('tabheader__item_active')
+    e.target.classList.add('tabheader__item_active')
 
-    switch (event.target.dataset.item) {
+    switch (e.target.dataset.item) {
         case 'fitness':
             tabContent.innerHTML = ''
             tabContent.innerHTML = FITNESS
