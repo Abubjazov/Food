@@ -13,11 +13,6 @@ export function postData(form) {
         statusMsg.textContent = message.loading
         form.append(statusMsg)
 
-        const request = new XMLHttpRequest()
-
-        request.open('POST', 'server.php')
-        request.setRequestHeader('Content-type', 'application/json')
-
         const formData = new FormData(form)
 
         const obj = {}
@@ -28,19 +23,25 @@ export function postData(form) {
 
         const json = JSON.stringify(obj)
 
-        request.send(json)
-
-        request.addEventListener('load', () => {
-            if (request.status === 200) {
-                console.log(request.response)
-                statusMsg.textContent = message.success
-                form.reset()
-                setTimeout(() => {
-                    statusMsg.remove()
-                }, 2000)
-            } else {
-                statusMsg.textContent = message.failure
-            }
+        fetch('server.php', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: json
+        })
+        .then(data => {
+            console.log(data)
+            statusMsg.textContent = message.success
+            setTimeout(() => {
+                statusMsg.remove()
+            }, 2000)
+        })
+        .catch(() => {
+            statusMsg.textContent = message.failure
+        })
+        .finally(() => {
+            form.reset()
         })
     })
 }
