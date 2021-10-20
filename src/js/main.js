@@ -6,6 +6,7 @@ import { keyDownHandler } from "./handlers/keyDown/keyDownHandler"
 import { showModalByScroll } from "./modals/showModalByScroll"
 import { renderMenu } from "./menu/renderMenu"
 import { MENU } from "./menu/menuTypes"
+import { postData } from "./handlers/forms"
 
 document.addEventListener('DOMContentLoaded', () => {
     actionTimer('2021-10-19')
@@ -18,4 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-modal]').forEach(dataModal => dataModal.addEventListener('click', callModal))
 
     document.querySelector('#menu').innerHTML = renderMenu(MENU)
+
+    document.querySelectorAll('form').forEach(form => {postData(form)})
 })

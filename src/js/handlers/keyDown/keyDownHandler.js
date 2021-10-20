@@ -1,5 +1,4 @@
 export const keyDownHandler = (e) => {
-    e.preventDefault()
     
     const modal = document.querySelector('.modal')
 
