@@ -1,11 +1,9 @@
+import { getMenuItems } from "./getMenuItems"
 import { MenuItem } from "./MenuItem"
 
-export const renderMenu = (menu) => {
+export const renderMenu = async () => {
 
-    const menuItems = menu
-
-    return menuItems.map(item => {
-            const mItem = new MenuItem(item)
-            return mItem.renderMenu()
-        }).join('')
+    const menuItems = await getMenuItems()
+    
+    return menuItems.map(item => new MenuItem(item).renderMenu()).join('')
 }
