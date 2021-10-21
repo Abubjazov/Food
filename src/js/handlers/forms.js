@@ -4,7 +4,7 @@ const message = {
     failure: 'Ошибка'
 }
 
-export function postData(form) {
+export const postData = (form) => {
     form.addEventListener('submit', (e) => {
         e.preventDefault()
 
@@ -15,15 +15,15 @@ export function postData(form) {
 
         const formData = new FormData(form)
 
-        const obj = {}
+        // const obj = {}
         
-        formData.forEach((val, key) => {
-            obj[key] = val
-        })
+        // formData.forEach((val, key) => {
+        //     obj[key] = val
+        // })
 
-        const json = JSON.stringify(obj)
+        const json = JSON.stringify(Object.fromEntries(formData.entries()))
 
-        fetch('server.php', {
+        fetch('http://localhost:3000/requests', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'
@@ -31,7 +31,6 @@ export function postData(form) {
             body: json
         })
         .then(data => {
-            console.log(data)
             statusMsg.textContent = message.success
             setTimeout(() => {
                 statusMsg.remove()
@@ -39,6 +38,9 @@ export function postData(form) {
         })
         .catch(() => {
             statusMsg.textContent = message.failure
+            setTimeout(() => {
+                statusMsg.remove()
+            }, 2000)
         })
         .finally(() => {
             form.reset()

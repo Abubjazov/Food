@@ -8,7 +8,7 @@ import { renderMenu } from "./menu/renderMenu"
 import { postData } from "./handlers/forms"
 
 document.addEventListener('DOMContentLoaded', () => {
-    actionTimer('2021-10-21')
+    actionTimer('2021-10-22')
     renderMenu().then(renderData => {
         document.querySelector('#menu').innerHTML = renderData
     })
