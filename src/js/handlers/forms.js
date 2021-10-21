@@ -15,12 +15,6 @@ export const postData = (form) => {
 
         const formData = new FormData(form)
 
-        // const obj = {}
-        
-        // formData.forEach((val, key) => {
-        //     obj[key] = val
-        // })
-
         const json = JSON.stringify(Object.fromEntries(formData.entries()))
 
         fetch('http://localhost:3000/requests', {
