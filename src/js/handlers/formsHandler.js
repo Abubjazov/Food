@@ -4,7 +4,7 @@ const message = {
     failure: 'Ошибка'
 }
 
-export const postData = (form) => {
+export const postDataHandler = (form) => {
     form.addEventListener('submit', (e) => {
         e.preventDefault()
 
