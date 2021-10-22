@@ -8,6 +8,7 @@ import { tabHeaderHandler } from "./handlers/tabHeaders/tabHeaderHandler"
 import { keyDownHandler } from "./handlers/keyDown/keyDownHandler"
 import { postDataHandler } from "./handlers/formsHandler"
 import { calculateHandler } from "./handlers/calculate/calculateHandler"
+import { setCalculate } from "./handlers/calculate/setCalculate"
 
 document.addEventListener('DOMContentLoaded', () => {
     actionTimer('2021-10-22')
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMenu().then(renderData => {
         document.querySelector('#menu').innerHTML = renderData
     })
+    setCalculate()
 
     document.addEventListener('scroll', progressBar)
     document.addEventListener('scroll', showModalByScroll)

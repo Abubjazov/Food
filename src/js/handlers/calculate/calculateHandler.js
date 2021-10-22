@@ -27,15 +27,17 @@ export const calculateHandler = (e) => {
         
     }
 
-    if (calcReady.every(i => i === true)) {
-        const initialData = {
-            sex: calculating.querySelector('#gender > .calculating__choose-item_active').innerText.toLowerCase() === 'мужчина' ? true : false,
-            activity: calculating.querySelector('.calculating__choose_big > .calculating__choose-item_active').id, 
-            weight: calculating.querySelector('#weight').value, 
-            height: calculating.querySelector('#height').value, 
-            age: calculating.querySelector('#age').value
-        }
+    const initialData = {
+        sex: calculating.querySelector('#gender > .calculating__choose-item_active').innerText.toLowerCase() === 'мужчина' ? true : false,
+        activity: calculating.querySelector('.calculating__choose_big > .calculating__choose-item_active').id, 
+        weight: calculating.querySelector('#weight').value, 
+        height: calculating.querySelector('#height').value, 
+        age: calculating.querySelector('#age').value
+    }
 
+    if (calcReady.every(i => i === true)) {
         calculating.querySelector('.calculating__result > span').innerText = calculator(initialData)
     }
+
+    localStorage.setItem('initialData', JSON.stringify(initialData))
 }
